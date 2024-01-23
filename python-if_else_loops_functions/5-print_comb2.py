@@ -6,3 +6,4 @@ for number in range(0, 99):
     else:
         print('')
 
+
