@@ -3,6 +3,8 @@
 Function that prints My name is <first name> <last name>
 Raise a TypeError exception if first_name or last_name are not strings
 """
+
+
 def say_my_name(first_name, last_name=""):
     """ This function prints My name is <first name> <last name>
     Raise a TypeError exception if first_name or last_name are not strings
