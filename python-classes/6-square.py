@@ -3,6 +3,7 @@
 A class Square that defines a square by: (based on 5-square.py)
 """
 
+
 class Square:
     """Class Square that defines a square"""
     def __init__(self, size=0, position=(0, 0)):
@@ -59,7 +60,7 @@ class Square:
         s_position = ""
         if self.size == 0:
             return "\n"
-        
+
         for n in range(self.position[1]):
             s_position += "\n"
 
@@ -73,9 +74,7 @@ class Square:
             s_position += "\n"
 
         return s_position
-    
+
     def __str__(self):
         """Prints in stdout the square with the character #"""
         return self.pos_print()
-
-    
