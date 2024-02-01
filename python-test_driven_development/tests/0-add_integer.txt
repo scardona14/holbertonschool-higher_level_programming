@@ -31,3 +31,62 @@ Passing None
     Traceback (most recent call last):
 	      ...
     TypeError: a must be an integer
+
+Adding a letter and a number
+    >>> add_integer('1', 1)
+    Traceback (most recent call last):
+            ...
+    TypeError: a must be an integer
+
+Adding two letters
+    >>> add_integer('2', '1')
+    Traceback (most recent call last):
+              ...
+    TypeError: a must be an integer
+
+Adding a tuple
+    >>> add_integer((1, 1))
+    Traceback (most recent call last):
+              ...
+    TypeError: a must be an integer
+
+Adding a number and a list
+    >>> add_integer(123, [])
+    Traceback (most recent call last):
+	      ...
+    TypeError: b must be an integer
+
+Passing a string
+    >>> add_integer("Hello")
+    Traceback (most recent call last):
+	      ...
+    TypeError: a must be an integer
+
+Adding two float numbers
+    >>> add_integer(2.9, 2.9)
+    4
+
+Subtracting 98 and 1
+    >>> add_integer(-1)
+    97
+
+Case Overflow:
+
+    >>> add_integer(float('inf'), 0)
+    Traceback (most recent call last):
+    	      ...
+    OverflowError: cannot convert float infinity to integer
+
+Case Overflow 2:
+
+    >>> add_integer(float('inf'), float('-inf'))
+    Traceback (most recent call last):
+    	      ...
+    OverflowError: cannot convert float infinity to integer
+
+Case NaN:
+
+    >>> add_integer(0, float('nan'))
+    Traceback (most recent call last):
+    	      ...
+    ValueError: cannot convert float NaN to integer
