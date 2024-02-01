@@ -12,8 +12,8 @@ Subtracting 100 and 2
     >>> add_integer(100, -2)
     98
 
-Adding 2.1 and 98
-    >>> add_integer(2.1)
+Adding 2
+    >>> add_integer(2)
     100
 
 Subtracting 100.3 and 2
