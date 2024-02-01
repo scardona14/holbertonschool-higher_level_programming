@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """Text indentation module"""
+
+
 def text_indentation(text):
-    """Prints a text with 2 new lines after each of these characters: ., ? and :
+    """Prints a text with 2 new lines after each characters: ., ? and :
     Args:
         text (str): The text to print.
     Raises:
