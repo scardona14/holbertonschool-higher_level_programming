@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
+
 """"2. Area and Perimeter of a rectangle"""
 
 
@@ -63,14 +63,14 @@ class Rectangle:
 
         if self.__width == 0 or self.__height == 0:
             return (0)
-        
+
         return (2 * (self.__width + self.__height))
-    
+
     def __str__(self) -> str:
-        """ Function that defines instances method to print rectangle with # """
+        """ Function that defines instances method to print rect with # """
         if self.__width == 0 or self.__height == 0:
             return ""
-        
+
         rectangle = ""
 
         for column in range(self.__height):
@@ -80,4 +80,4 @@ class Rectangle:
             if column < self.__height - 1:
                 rectangle += "\n"
 
-            return rectangle
+            return (rectangle)
