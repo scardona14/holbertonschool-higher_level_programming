@@ -2,6 +2,7 @@
 
 """"3. String representation"""
 
+
 class Rectangle:
     """Class that defines a rectangle"""
 
