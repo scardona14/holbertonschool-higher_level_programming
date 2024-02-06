@@ -9,8 +9,8 @@ class Rectangle:
     def __init__(self, width=0, height=0):
         """Method that initializes the instance"""
 
-        self.width = width
         self.height = height
+        self.width = width
 
     @property
     def width(self):
@@ -65,13 +65,13 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return (0)
 
-        return (2 * (self.__width + self.__height))
+        return self.__width * 2 + self.__height * 2
 
     def __str__(self) -> str:
         """ Function that defines instances method to print rect with # """
 
         if self.__width == 0 or self.__height == 0:
-            return ("")
+            return ""
 
         rectangle = ""
 
