@@ -23,6 +23,7 @@ class Rectangle:
         Function that sets width instance attribute
         Raise a TypeError & ValueError if not integer of natural number resp.
         """
+
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
 
@@ -67,8 +68,9 @@ class Rectangle:
 
     def __str__(self) -> str:
         """ Function that defines instances method to print rect with # """
+
         if self.__width == 0 or self.__height == 0:
-            return ""
+            return ("")
 
         rectangle = ""
 
