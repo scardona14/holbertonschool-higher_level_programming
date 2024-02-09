@@ -1,0 +1,128 @@
+# 7. Integer validator
+# Run: python3 -m doctest -v ./tests/7-base_geometry.txt
+
+Importing the function from the module:
+     >>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+
+Passing docstring import module:
+     >>> bg = __import__("7-base_geometry").__doc__
+     >>> len(bg) > 1
+     True
+
+Passing docstring import module with doc class:
+     >>> bg = __import__("7-base_geometry").BaseGeometry.__doc__
+     >>> len(bg) > 1
+     True
+
+Passing docstring method:
+
+     >>> bg = __import__("7-base_geometry").BaseGeometry.area.__doc__
+     >>> len(bg) > 1
+     True
+
+     >>> BG = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+     >>> len(BG) > 1
+     True
+
+Passing unimplemented area:
+     >>> bg = BaseGeometry()
+     >>> bg.area()
+     Traceback (most recent call last):
+     ...
+     Exception: area() is not implemented
+
+Passing too many arguments to unimplemented area:
+     >>> bg.area(13)
+     Traceback (most recent call last):
+     ...
+     TypeError: area() takes 1 positional argument but 2 were given
+
+Passing right arguments:
+     >>> bg.integer_validator("integer", 13)
+
+Passing 0:
+     >>> bg.integer_validator("integer", 0)
+     Traceback (most recent call last):
+     ...
+     ValueError: integer must be greater than 0
+
+Passing integers less than 0;
+     >>> bg.integer_validator("integer", -13)
+     Traceback (most recent call last):
+     ...
+     ValueError: integer must be greater than 0
+
+Passing non-integer types:
+
+     >>> bg.integer_validator("Boolean", False)
+     Traceback (most recent call last):
+     ...
+     TypeError: Boolean must be an integer
+
+     >>> bg.integer_validator("FloatingPoint", 4.04)
+     Traceback (most recent call last):
+     ...
+     TypeError: FloatingPoint must be an integer
+
+     >>> bg.integer_validator("ComplexNumber", complex(13, 13))
+     Traceback (most recent call last):
+     ...
+     TypeError: ComplexNumber must be an integer
+
+     >>> bg.integer_validator("String", "Zayn")
+     Traceback (most recent call last):
+     ...
+     TypeError: String must be an integer
+
+     >>> bg.integer_validator("Tuple", (13, 31))
+     Traceback (most recent call last):
+     ...
+     TypeError: Tuple must be an integer
+
+     >>> bg.integer_validator("List", [3, 13, 31])
+     Traceback (most recent call last):
+     ...
+     TypeError: List must be an integer
+
+     >>> bg.integer_validator("Dictionary", {"Name": "Mejbri"})
+     Traceback (most recent call last):
+     ...
+     TypeError: Dictionary must be an integer
+
+     >>> bg.integer_validator("Set", {"United", "Arsenal"})
+     Traceback (most recent call last):
+     ...
+     TypeError: Set must be an integer
+
+     >>> bg.integer_validator("frozenset", frozenset(["Jon", "Snow"]))
+     Traceback (most recent call last):
+     ...
+     TypeError: frozenset must be an integer
+
+     >>> bg.integer_validator("bytes", b"bytes")
+     Traceback (most recent call last):
+     ...
+     TypeError: bytes must be an integer
+
+     >>> bg.integer_validator("bytearrays", bytearray(b"bytes"))
+     Traceback (most recent call last):
+     ...
+     TypeError: bytearrays must be an integer
+
+Passing no arguments:
+     >>> bg.integer_validator()
+     Traceback (most recent call last):
+     ...
+     TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Passing only one argument:
+     >>> bg.integer_validator("Hannibal")
+     Traceback (most recent call last):
+     ...
+     TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+Passing too many arguments:
+     >>> bg.integer_validator("Hannibal", 2005, 13)
+     Traceback (most recent call last):
+     ...
+     TypeError: integer_validator() takes 3 positional arguments but 4 were given
