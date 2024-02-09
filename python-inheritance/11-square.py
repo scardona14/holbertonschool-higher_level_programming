@@ -19,7 +19,7 @@ class Square(Rectangle):
         """A function that computes area of a square"""
 
         return self.__size * self.__size
-    
+
     def __str__(self):
         """A function that returns a string representation of the square"""
 
