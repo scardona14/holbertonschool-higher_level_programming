@@ -8,4 +8,3 @@ CREATE TABLE IF NOT EXISTS hbtn_0d_usa.cities (
     FOREIGN KEY (state_id),
     REFERENCES hbnt_0d_usa.states (id)
 );
-```
