@@ -2,7 +2,7 @@
 """
 Script that lists all states from the databse hbtn_0e_0_usa
 """
-import mariadb
+import MySQLdb
 from sys import argv
 
 if __name__ == '__main__':
@@ -11,7 +11,7 @@ if __name__ == '__main__':
     base = argv[3]
 
     # Connecting to MySQL database
-    db = mariadb.connect(host="localhost", user=u_name,
+    db = MySQLdb.connect(host="localhost", user=u_name,
                          passwd=psw, db=base, port=3306)
 
     # Creating cursor object
