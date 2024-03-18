@@ -2,7 +2,6 @@
 """
 Script that lists all states from the databse hbtn_0e_0_usa
 """
-
 from sys import argv
 import MySQLdb
 
