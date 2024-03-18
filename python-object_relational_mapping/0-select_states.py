@@ -2,7 +2,7 @@
 """
 Script that lists all states from the databse hbtn_0e_0_usa
 """
-import mariadb
+
 from sys import argv
 import MySQLdb
 
