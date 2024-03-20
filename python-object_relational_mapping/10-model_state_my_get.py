@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists first states object from the database"""
+"""Print the State object with the name passed"""
 
 
 import sys
@@ -9,11 +9,12 @@ from model_state import Base, State
 
 
 if __name__ == "__main__":
-    """Lists first state object from the database"""
+    """Print the State object with the name passed """
 
     user = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
+    name = sys.argv[4]
 
     engine = create_engine(
         f"mysql+mysqldb://{user}:{password}@localhost:3306/{database}"
@@ -22,9 +23,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state = session.query(State).filter(State.name.like('%a%'))
-    for states in state:
-        if state:
-            print(f"{states.id}: {states.name}")
-        else:
-            print("Nothing")
+    states = session.query(State).filter(State.name.like(name)).scalar()
+
+    if states is not None:
+        print(states.id)
+    else:
+        print("Not found")
