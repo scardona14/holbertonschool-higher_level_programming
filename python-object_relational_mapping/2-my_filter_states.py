@@ -1,34 +1,34 @@
 #!/usr/bin/python3
-"""
-Script that lists all states with a name starting with N
-from the databse hbtn_0e_0_usa
-"""
 import MySQLdb
-from sys import argv
+import sys
 
-if __name__ == '__main__':
-    u_name = argv[1]
-    psw = argv[2]
-    base = argv[3]
-    search = argv[4]
+if __name__ == "__main__":
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
+    state_name = sys.argv[4]
 
-    # Connecting to MySQL database
-    db = MySQLdb.connect(host="localhost", user=u_name,
-                         passwd=psw, db=base, port=3306)
+    # Connect to MySQL server
+    db = MySQLdb.connect(host='localhost', port=3306, user=username, passwd=password, db=db_name)
 
-    # Creating cursor object
-    cur = db.cursor()
+    # Create a cursor object using cursor() method
+    cursor = db.cursor()
 
-    # Executing MySql Query
-    cur.execute("SELECT * FROM states WHERE name = '{}'\
-                 ORDER BY id".format(search))
+    # Prepare SQL query to fetch data from the states table
+    sql_query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
 
-    # Obtaining Query Result & prints the result in rows
-    rows = cur.fetchall()
-    for row in rows:
-        if row[1][0] == 'N':
+    try:
+        # Execute the SQL query
+        cursor.execute(sql_query, (state_name,))
+        # Fetch all the rows in a list of tuples
+        results = cursor.fetchall()
+        # Display results
+        for row in results:
             print(row)
+    except Exception as e:
+        print("Error: unable to fetch data -", e)
 
-    # Clean Up
-    cur.close()
+    # Disconnect from server
     db.close()
+    cursor.close()
+
