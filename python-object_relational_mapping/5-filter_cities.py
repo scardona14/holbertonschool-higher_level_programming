@@ -1,32 +1,36 @@
 #!/usr/bin/python3
 """
-Script that lists all cities from the database hbtn_0e_4_usa
+Script that lists all states with a name starting with N
+from the databse hbtn_0e_0_usa
 """
-
 import MySQLdb
-import sys
+from sys import argv
 
-if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        print("Usage: {} username password database_name state_name".format(sys.argv[0]))
-        exit(1)
+if __name__ == '__main__':
+    u_name = argv[1]
+    psw = argv[2]
+    base = argv[3]
+    state = argv[4]
 
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database_name = sys.argv[3]
-    state_name = sys.argv[4]
+    # Connecting to MySQL database
+    db = MySQLdb.connect(host="localhost", user=u_name,
+                         passwd=psw, db=base, port=3306)
 
-    try:
-        db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database_name)
-        cursor = db.cursor()
-        cursor.execute("SELECT cities.name FROM cities INNER JOIN states ON cities.state_id = states.id WHERE states.name = %s ORDER BY cities.id ASC", (state_name,))
-        cities = cursor.fetchall()
-        if not cities:
-            print("No cities found for the given state.")
-        else:
-            city_names = ', '.join(city[0] for city in cities)
-            print(city_names)
-        cursor.close()
-        db.close()
-    except MySQLdb.Error as e:
-        print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
+    # Creating cursor object
+    cur = db.cursor()
+
+    # Executing MySql Query
+    cur.execute("SELECT name FROM cities WHERE state_id = \
+                (SELECT id FROM states WHERE name = '{}')\
+                ORDER BY id".format(state))
+
+    # Obtaining Query Result & prints the result in rows
+    rows = cur.fetchall()
+    lis = []
+    for row in rows:
+        lis.append(row[0])
+    print(', '.join(lis))
+
+    # Clean Up
+    cur.close()
+    db.close()
