@@ -25,4 +25,3 @@ if __name__ == "__main__":
     states.name = "New Mexico"
     session.commit()
     session.close()
-
