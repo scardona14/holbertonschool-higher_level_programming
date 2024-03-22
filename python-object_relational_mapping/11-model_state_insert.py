@@ -26,4 +26,3 @@ if __name__ == "__main__":
     session.commit()
     states = session.query(State).distinct().count()
     print(states)
-
