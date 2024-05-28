@@ -1,7 +1,11 @@
-$.get('https://swapi-api.hbtn.io/api/people/5/?format=json', (data, textStatus) => {
-    if (textStatus === 'success') {
-        for (const i of data.results) {
-          $('UL#list_movies').append('<li>>${i.title}</li>');
-      }
-    }
+document.addEventListener('DOMContentLoaded', function() {
+  const apiUrl = 'https://fourtonfish.com/hellosalut/?lang=fr';
+
+  fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    const helloDiv = document.getElementById('hello');
+    helloDiv.textContent = data.hello;
+  })
+  .catch(error => console.error('Error fetching data:', error));
 });
